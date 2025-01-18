@@ -7,8 +7,7 @@ function GameBoard() {
 
     const handleClisk = (index) =>{
         const newBoard = board.slice();
-        newBoard[index] = next? 'x' : 'y';
-
+        newBoard[index] = next? 'X' : 'O';
         setBoard(newBoard);
         console.log(board);
         setNext(!next);
@@ -19,7 +18,7 @@ function GameBoard() {
           <div className='grid grid-cols-3 gap-1 w-40 h-48'>
               {
                   board.map((cell, index) => (
-                      <button key={index} className='border border-black text-lg' onClick={handleClisk}>{cell}</button>))
+                      <button key={index} className='border border-black w-16 h-16 cursor-pointer text-lg' onClick={() => handleClisk(index)}>{cell}</button>))
               }
 
           </div>
