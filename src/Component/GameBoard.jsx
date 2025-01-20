@@ -6,8 +6,10 @@ function GameBoard() {
 
   let winner = findWinner(board);
 
+  let isDraw = !winner && board.every((cell) => cell !== null);
+
   const handleClisk = (index) => {
-    if (board[index] || winner) return;
+    if (board[index] || winner || isDraw) return;
 
     const newBoard = board.slice();
     newBoard[index] = next ? "X" : "O";
@@ -26,7 +28,9 @@ function GameBoard() {
       <div className="text-3xl text-blue-600 font-semibold p-8">
         {winner ? (
           <h1 className="text-green-500">"Winner" : {winner}</h1>
-        ) : (
+        ) 
+        : isDraw ? (<h1 className="text-red-500">"Match draw"</h1>) 
+        :(
           <h1>"Player": {next ? "X" : "O"}</h1>
         )}
       </div>
